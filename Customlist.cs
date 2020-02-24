@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Customlistassng
 {
-    class Customlist
+   public class Customlist<T>
     {
+
+
+
+
+
     }
 }
