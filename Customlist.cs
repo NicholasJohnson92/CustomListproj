@@ -8,14 +8,43 @@ namespace Customlistassng
 {
     public class Customlist<T>
     {//Membr Vars
-
+        
         private int count = 0;
         public int Count { get { return count; } }
 
         private int capacity = 4;
         public int Capacity { get { return capacity; } }
-        public T[] list;
+        private T[] list;
+        public T this[int index]
+        {
+            get
+            {
+                if (index < 0 && index >= capacity + 1)
+                    throw new IndexOutOfRangeException(" Index out of Range!! ");
+                return list[index];
 
+
+
+            }
+
+
+            set
+            {
+                if (index < 0 || index >= capacity + 1)
+                    throw new IndexOutOfRangeException(" Index out of Range!! ");
+
+                list[index] = value;
+            }
+
+
+
+
+        }
+
+
+
+
+        
         //Constructor
         public Customlist()
         {
@@ -24,6 +53,8 @@ namespace Customlistassng
 
 
         }
+
+        
             
             
            
@@ -114,21 +145,57 @@ namespace Customlistassng
             count--;
             
 
+
+
+            
+
             return count;
            
 
 
         }
 
-        private void RemoveAct(T item) 
-            {
-            int counter1 = 0;
+        private int RemoveAct(T item)
+        {
+            int capacity1 = capacity;
+            int k = 0;
+            int j = 0;
             int i = 0;
-                while (i == 0)
-                    if (list[counter1].Equals(item)) { list[counter1] = default(T); i++; }
-                    else { i = 0; counter1++; }
+
+            T[] list1 = new T[capacity1];
+
+
+            while (i == 0) {
+                if (list[j].Equals(item)) { list[j] = default(T); j++;i++;  }
+                else { i = 0; i++; j++; k++;
+                    
+                }
+                while (j<=count) { list1[k] = list[j];
+                    list[j] = list1[j];
+                    list[k] = list1[k];
+                    j++;
+                    k++;
+                }
             }
 
+            return j;
 
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }    
+    }      
 }
