@@ -9,14 +9,19 @@ namespace Customlistassng
     public class Customlist<T>
     {//Membr Vars
 
-        int count = 0;
-        static int capacity = 4;
+        private int count = 0;
+        public int Count { get { return count; } }
 
-        T[] list = new T[capacity];
+        private int capacity = 4;
+        public int Capacity { get { return capacity; } }
+      public   T[] list;
 
         //Constructor
         public Customlist()
         {
+
+          list  = new T[capacity];
+
 
         }
             
@@ -36,14 +41,16 @@ namespace Customlistassng
         //methods
 
 
-        public void Add(T item) 
-        { int i = 0;
+        public int Add(T item) 
+        { 
             if (count>=(capacity+1))
             {
                 T[] list = new T[capacity*2];
+                count = count + 1;
             }
 
             else { list[count] = item; count++; }
+            return count;
         
         
         
@@ -51,9 +58,26 @@ namespace Customlistassng
         
         
         }
+        public int Remove(T item)
+        {
+            
+            if (count <= (capacity/2)&& count>3)
+            {
+                T[] list = new T[capacity / 2];
+                count = count - 1;
+            }
+
+            else { list[count] = default(T); count--; }
 
 
-       
+
+            return count;
+
+
+        }
+
+
+
 
 
     }
