@@ -34,6 +34,7 @@ namespace Customlistassng
                     throw new IndexOutOfRangeException(" Index out of Range!! ");
 
                 list[index] = value;
+
             }
 
 
@@ -95,22 +96,11 @@ namespace Customlistassng
                 list1[count] = item;
                 list = list1;
 
-                count++;
-
-
-
-
-
+                count++; 
             }
 
             else { list[count] = item; count++; }
             return count;
-        
-        
-        
-        
-        
-        
         }
         public int Remove(T item)
         {
@@ -143,15 +133,7 @@ namespace Customlistassng
                     );
             }
             count--;
-            
-
-
-
-            
-
             return count;
-           
-
 
         }
 
@@ -165,12 +147,17 @@ namespace Customlistassng
             T[] list1 = new T[capacity1];
 
 
-            while (i == 0) {
-                if (list[j].Equals(item)) { list[j] = default(T); j++;i++;  }
-                else { i = 0; i++; j++; k++;
-                    
+            while (i == 0)
+            {
+                if (list[j].Equals(item)) { list[j] = default(T); j++; i++; }
+                else
+                {
+                    i = 0; i++; j++; k++;
+
                 }
-                while (j<=count) { list1[k] = list[j];
+                while (j <= count)
+                {
+                    list1[k] = list[j];
                     list[j] = list1[j];
                     list[k] = list1[k];
                     j++;
@@ -179,6 +166,31 @@ namespace Customlistassng
             }
 
             return j;
+        }
+
+        public override string ToString()
+        {
+            string newstr2 = null;
+            string newstr=",";
+            int counter = 0;
+            while (counter < count-1)
+            {
+             string newstr1=  list[counter].ToString();
+                 newstr2 =newstr2+ newstr1 + newstr;
+                counter++;
+                
+            }
+            if (counter == count - 1)
+            {
+                string newstr1 = list[counter].ToString();
+
+                newstr2 = newstr2 + newstr1;
+            }
+            
+            
+            
+            return newstr2;
+        }
 
 
 
@@ -194,8 +206,5 @@ namespace Customlistassng
 
 
 
-
-
-        }    
     }      
 }
