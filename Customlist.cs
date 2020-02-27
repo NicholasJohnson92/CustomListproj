@@ -191,9 +191,42 @@ namespace Customlistassng
             
             return newstr2;
         }
+        public static Customlist<T> operator +(Customlist<T> one, Customlist<T> two) 
+        {
+            int counter2 = 0;
+            int counter=0;
+           Customlist<T> newlist = new Customlist<T>();
+            while(counter< (one.count )) 
+            {
+                
+
+                newlist.Add(one[counter]);
+
+                counter++;
+
+
+            }
+            while (counter2 < (two.count))
+            {
+
+
+                newlist.Add(two[counter2]);
+
+                counter2++;
+
+
+            }
+
+            return newlist;
 
 
 
+
+
+
+        }
+
+        
 
 
 
