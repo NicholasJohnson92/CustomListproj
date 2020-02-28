@@ -1,0 +1,10 @@
+To access the - overload operator the snytax should be the minus symbol preceded by the first parameter and then after the minus symbol followed by a second parameter. 
+These paramters should be first the list you want to subract from, the second prarameter being the subracting list. this operator  has a return type of Customlist<T>, and will 
+return the subracted-from list.
+Ex.
+Customlist<int> one = new CustomList{1,2,3,4}	
+Customlist<int> two = new CustomList{1,3}
+
+one-two;
+Console.Writeline(one.TosTring())
+Console would read "2,4".
