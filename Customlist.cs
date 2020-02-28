@@ -230,100 +230,114 @@ namespace Customlistassng
 
             return newlist;
         }
-        //public static Customlist<T> operator -(Customlist<T> one, Customlist<T> two)
-        //{
-        //    T deadThing;
-        //    int counteer2 = 0;
-        //    int counteer = 0;
-        //    int delCounter2 = 0;
-        //    int delCounter = 0;
-        //    while (counteer2 < two.Count)
-        //    {
-        //        while (counteer < one.Count)
-        //        {
-        //            if (one[delCounter].Equals(two[delCounter2])) 
-        //            { deadThing = one[delCounter];
-        //                int counta=0;foreach
-        //                int counta1=0;
-        //                int counta2 = 0;
-        //                while (counta < one.Count)
-        //                {
-        //                    if (deadThing.Equals(one[counta]))
-        //                    {
-        //                        counta++;
-        //                        counta1++;
-
-
-
-        //                    }
-        //                    else
-        //                    {
-
-        //                    }
-        //                }
-
-        //                    while (counta1 > 0) { one.Remove(deadThing); counta1--; }
-
-
-
-        //                 counta = 0;
-        //                while (counta < two.Count)
-        //                {
-        //                    if (deadThing.Equals(two[counta]))
-        //                    {
-        //                        counta++;
-        //                        counta2++;
-
-
-
-        //                    }
-        //                    else
-        //                    {
-        //                        counta++;
-        //                    }
-
-
-
-
-        //                } while (counta2 > 0) { two.Remove(deadThing); counta2--; }
-
-
-
-
-        //            }
-        //            counteer++;
-        //        }
-
-
-
-        //        counteer2++;
-
-
-
-
-        //    }
-
-        //    return one + two;
-        //}
-
-
         public static Customlist<T> operator -(Customlist<T> one, Customlist<T> two)
         {
-            
-            foreach (T item in one)
-            {
+            T deadThing;
+           
+            int counteer = 0;
+            int delCounter2 = 0;
+            int delCounter = 0;
 
-                for (int index = 0; index < two.count; index++)
+            while (delCounter < one.count)
+            {
+                while (counteer < two.Count)
                 {
-                    if (item.Equals(two[index])) 
-                    { one.Remove(item); }
-                }
-               
-            }
+                    if (one[delCounter].Equals(two[delCounter2]))
+                    {
+                        deadThing = one[delCounter];
+                        int counta = 0;
+
+                        int counta1 = 0;
+                        int counta2 = 0;
+                        foreach (T item in one)
+                        {
+                            if (item.Equals(deadThing))
+                            {
+                                one.Remove(item);
+                                delCounter = 0;
+                                delCounter2++;
+
+                            }
+                        }
+                    }
+                    else { delCounter2++; } counteer++;
+                } delCounter++; counteer = 0;
+            } return one;
+
+
+
+
+                
             
-            return one;
+
+                        
+
+
+
+                     
+
+
+
+
+                    
+                
+            
+
+
+
+           
+
+
+
+
         }
 
+        public Customlist<T> Zip(Customlist<T> list1) 
+        {
+            int counter1 = 0;
+            
+            Customlist<T> zipped = new Customlist<T>();
+            int turnstile;
+            if (count > list1.Count) 
+            { turnstile = count;
+            }
+            else 
+            { turnstile = list1.Count;
+            }
+            while (counter1 < turnstile) 
+            {
+                zipped.Add(list[counter1]);
+                zipped.Add(list1[counter1]);
+                counter1++;
+            
+            
+            }
+
+            return zipped;
+        
+        
+        
+        
+        }
+        
+
+
+    //public static Customlist<T> operator -(Customlist<T> one, Customlist<T> two)
+    //{
+
+    //    foreach (T item in two)
+    //    {
+
+    //        for (int index = 0; index < two.count; index++)
+    //        {
+    //            if (item.Equals(one[])) 
+    //            { one.Remove(item); }
+    //        }
+
+    //    }
+
+    //    return one;
+    //}
 
 
 
@@ -347,5 +361,6 @@ namespace Customlistassng
 
 
 
-        }      
+
+}      
 }
