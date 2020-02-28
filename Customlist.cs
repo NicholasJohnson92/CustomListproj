@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace Customlistassng
 {
-    public class Customlist<T>
+    public class Customlist<T> : IEnumerable
     {//Membr Vars
         
         private int count = 0;
@@ -155,7 +156,7 @@ namespace Customlistassng
                     i = 0; i++; j++; k++;
 
                 }
-                while (j <= count)
+                while (j < count)
                 {
                     list1[k] = list[j];
                     list[j] = list1[j];
@@ -189,16 +190,26 @@ namespace Customlistassng
             
             
             
+           
             return newstr2;
         }
-        public static Customlist<T> operator +(Customlist<T> one, Customlist<T> two) 
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int index = 0; index < count ; index++)
+            {
+                yield return list[index];
+            }
+        }
+
+        public static Customlist<T> operator +(Customlist<T> one, Customlist<T> two)
         {
             int counter2 = 0;
-            int counter=0;
-           Customlist<T> newlist = new Customlist<T>();
-            while(counter< (one.count )) 
+            int counter = 0;
+            Customlist<T> newlist = new Customlist<T>();
+            while (counter < (one.count))
             {
-                
+
 
                 newlist.Add(one[counter]);
 
@@ -218,15 +229,101 @@ namespace Customlistassng
             }
 
             return newlist;
+        }
+        //public static Customlist<T> operator -(Customlist<T> one, Customlist<T> two)
+        //{
+        //    T deadThing;
+        //    int counteer2 = 0;
+        //    int counteer = 0;
+        //    int delCounter2 = 0;
+        //    int delCounter = 0;
+        //    while (counteer2 < two.Count)
+        //    {
+        //        while (counteer < one.Count)
+        //        {
+        //            if (one[delCounter].Equals(two[delCounter2])) 
+        //            { deadThing = one[delCounter];
+        //                int counta=0;foreach
+        //                int counta1=0;
+        //                int counta2 = 0;
+        //                while (counta < one.Count)
+        //                {
+        //                    if (deadThing.Equals(one[counta]))
+        //                    {
+        //                        counta++;
+        //                        counta1++;
+
+
+
+        //                    }
+        //                    else
+        //                    {
+
+        //                    }
+        //                }
+
+        //                    while (counta1 > 0) { one.Remove(deadThing); counta1--; }
+
+
+
+        //                 counta = 0;
+        //                while (counta < two.Count)
+        //                {
+        //                    if (deadThing.Equals(two[counta]))
+        //                    {
+        //                        counta++;
+        //                        counta2++;
+
+
+
+        //                    }
+        //                    else
+        //                    {
+        //                        counta++;
+        //                    }
 
 
 
 
+        //                } while (counta2 > 0) { two.Remove(deadThing); counta2--; }
 
 
+
+
+        //            }
+        //            counteer++;
+        //        }
+
+
+
+        //        counteer2++;
+
+
+
+
+        //    }
+
+        //    return one + two;
+        //}
+
+
+        public static Customlist<T> operator -(Customlist<T> one, Customlist<T> two)
+        {
+            
+            foreach (T item in one)
+            {
+
+                for (int index = 0; index < two.count; index++)
+                {
+                    if (item.Equals(two[index])) 
+                    { one.Remove(item); }
+                }
+               
+            }
+            
+            return one;
         }
 
-        
 
 
 
@@ -239,5 +336,16 @@ namespace Customlistassng
 
 
 
-    }      
+
+
+
+
+
+
+
+
+
+
+
+        }      
 }
